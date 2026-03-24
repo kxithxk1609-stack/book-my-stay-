@@ -1,40 +1,24 @@
-import java.util.LinkedList;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 
 public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        // LinkedList to maintain booking order
-        LinkedList<String> bookings = new LinkedList<>();
+        // LinkedHashSet maintains order + uniqueness
+        LinkedHashSet<String> bookings = new LinkedHashSet<>();
 
-        // HashSet to prevent duplicate room IDs
-        HashSet<String> uniqueRooms = new HashSet<>();
+        // Add room bookings
+        bookings.add("Room101");
+        bookings.add("Room102");
+        bookings.add("Room103");
+        bookings.add("Room104");
 
-        // Sample room bookings (with duplicate)
-        String[] rooms = {
-            "Room101", "Room102", "Room103",
-            "Room104", "Room105", "Room103"
-        };
+        // Attempt duplicate booking
+        bookings.add("Room102"); // will be ignored automatically
 
-        // Add rooms while checking duplicates
-        for (String room : rooms) {
-            if (uniqueRooms.add(room)) {
-                bookings.add(room);
-            } else {
-                System.out.println("Duplicate booking ignored: " + room);
-            }
-        }
+        // Display final booking order
+        System.out.println("Final Room Booking Order:");
 
-        // Insert VIP room at position 2
-        bookings.add(2, "VIP-Room");
-
-        // Remove first and last booking
-        bookings.removeFirst();
-        bookings.removeLast();
-
-        // Display final bookings
-        System.out.println("\nFinal Room Bookings:");
         for (String room : bookings) {
             System.out.println(room);
         }
