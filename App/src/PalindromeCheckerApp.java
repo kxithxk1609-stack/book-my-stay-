@@ -4,7 +4,6 @@ class Bogie {
     String name;
     int capacity;
 
-    // Constructor
     Bogie(String name, int capacity) {
         this.name = name;
         this.capacity = capacity;
@@ -15,21 +14,20 @@ public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        // Create list of bogies
         List<Bogie> bogies = new ArrayList<>();
 
         bogies.add(new Bogie("Sleeper", 72));
         bogies.add(new Bogie("AC Chair", 60));
         bogies.add(new Bogie("First Class", 24));
+        bogies.add(new Bogie("Cargo", 100));
 
-        // Sort using Comparator (ascending capacity)
-        bogies.sort(Comparator.comparingInt(b -> b.capacity));
+        System.out.println("Bogies with capacity greater than 50:\n");
 
-        // Display sorted bogies
-        System.out.println("Sorted Bogies by Capacity:\n");
-
-        for (Bogie b : bogies) {
-            System.out.println(b.name + " → Capacity: " + b.capacity);
-        }
+        // Filter using Stream API
+        bogies.stream()
+              .filter(b -> b.capacity > 50)
+              .forEach(b -> System.out.println(
+                      b.name + " → Capacity: " + b.capacity
+              ));
     }
 }
