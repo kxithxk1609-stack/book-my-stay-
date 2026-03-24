@@ -1,26 +1,26 @@
-import java.util.LinkedHashSet;
+import java.util.HashMap;
+import java.util.Map;
 
 public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        // LinkedHashSet maintains order + uniqueness
-        LinkedHashSet<String> bookings = new LinkedHashSet<>();
+        // Create HashMap (Bogie → Capacity)
+        HashMap<String, Integer> bogieCapacity = new HashMap<>();
 
-        // Add room bookings
-        bookings.add("Room101");
-        bookings.add("Room102");
-        bookings.add("Room103");
-        bookings.add("Room104");
+        // Insert values using put()
+        bogieCapacity.put("Sleeper", 72);
+        bogieCapacity.put("AC Chair", 60);
+        bogieCapacity.put("First Class", 24);
+        bogieCapacity.put("Cargo", 100);
 
-        // Attempt duplicate booking
-        bookings.add("Room102"); // will be ignored automatically
+        // Display all bogies with capacity
+        System.out.println("Bogie Capacity Details:\n");
 
-        // Display final booking order
-        System.out.println("Final Room Booking Order:");
-
-        for (String room : bookings) {
-            System.out.println(room);
+        for (Map.Entry<String, Integer> entry : bogieCapacity.entrySet()) {
+            System.out.println(
+                entry.getKey() + " → Capacity: " + entry.getValue()
+            );
         }
     }
 }
